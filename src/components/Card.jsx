@@ -28,7 +28,10 @@ const Card = ({ job }) => {
       <div className="card-skills-filter">
         <button>{job.role}</button>
         <button>{job.level}</button>
-        <button>{job.languages}</button>
+        {job.tools.length > 0 ? <button>{job.tools}</button> : ""}
+        {job.languages.map((language, index) => (
+          <button key={index}>{language}</button>
+        ))}
       </div>
     </div>
   );

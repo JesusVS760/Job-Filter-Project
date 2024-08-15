@@ -1,12 +1,13 @@
 .card-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: gray;
-  padding: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
+  justify-content: space-between;
+  background-color: white;
+  padding: 25px;
   border-radius: 10px;
+  width: 80%;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px hsl(180, 29%, 50%); /* Bottom shadow */
 }
 .card-header {
   display: flex;
@@ -24,4 +25,14 @@
   display: flex;
   align-items: start;
   gap: 10px;
+}
+.card-skills-filter button {
+  padding: 10px;
+  color: hsl(180, 29%, 50%);
+  font-weight: 700;
+  font-size: 1rem;
+  background: hsl(180, 52%, 96%);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
