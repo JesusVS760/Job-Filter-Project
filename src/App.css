@@ -1,0 +1,6 @@
+.app-style-image {
+  background: hsl(180, 29%, 50%);
+}
+.app-style-image img {
+  width: 100%;
+}
