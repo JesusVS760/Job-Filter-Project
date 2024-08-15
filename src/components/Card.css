@@ -13,6 +13,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 15px;
+}
+.card-profile-img {
+  padding: 5px;
 }
 .card-content {
   display: flex;
@@ -25,7 +29,9 @@
   display: flex;
   align-items: start;
   gap: 10px;
+  text-wrap: wrap;
 }
+
 .card-skills-filter button {
   padding: 10px;
   color: hsl(180, 29%, 50%);
@@ -35,4 +41,23 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.company-name {
+  color: hsl(180, 29%, 50%);
+}
+.new,
+.featured {
+  font-size: 0.9rem;
+}
+.new {
+  background: hsl(180, 29%, 50%);
+  padding: 5px;
+  border-radius: 50px;
+  color: white;
+}
+.featured {
+  background: black;
+  padding: 5px;
+  border-radius: 50px;
+  color: white;
 }

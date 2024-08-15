@@ -11,8 +11,10 @@ const Card = ({ job }) => {
         <div className="card-content">
           <div className="profile-company-info">
             <h3 className="company-name">{job.company}</h3>
-            <h3 className="new">{job.new ? "NEW!" : ""}</h3>
-            <h3 className="featured">{job.featured ? "FEATURED" : ""}</h3>
+            <h3 className={job.new ? "new" : ""}>{job.new ? "NEW!" : ""}</h3>
+            <h3 className={job.featured ? "featured" : ""}>
+              {job.featured ? "FEATURED" : ""}
+            </h3>
           </div>
 
           <div className="comapny-job-position">
