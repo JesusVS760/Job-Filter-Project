@@ -1,0 +1,27 @@
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gray;
+  padding: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 20px;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-content {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+}
+.profile-company-info,
+.card-conditions,
+.card-skills-filter {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+}
