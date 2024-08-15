@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Card.css";
 
 const Card = ({ job }) => {
+  // const [filterItems, setFilterItems] = useState(
+  //   job.map((item) => item.languages)
+  // );
+  console.log(job);
+  const [filterItems, setFilterItems] = useState(job);
+
+  // console.log(filterItems);
+  // console.log("BEFORE");
+
+  const handFilterItems = (filteredItem) => {
+    const result = setFilterItems(filterItems.filter(filteredItem));
+    console.log(result);
+    return filterItems;
+  };
+
   return (
     <div className="card-container">
       <div className="card-header">
@@ -32,7 +47,9 @@ const Card = ({ job }) => {
         <button>{job.level}</button>
         {job.tools.length > 0 ? <button>{job.tools}</button> : ""}
         {job.languages.map((language, index) => (
-          <button key={index}>{language}</button>
+          <button onClick={(language) => handFilterItems(language)} key={index}>
+            {language}
+          </button>
         ))}
       </div>
     </div>

@@ -5,7 +5,6 @@ import Card from "./components/Card";
 import json from "../data.json";
 const App = () => {
   const [data, setData] = useState(json);
-  console.log(data);
   return (
     <div className="app-container">
       <div className="app-style-image">
