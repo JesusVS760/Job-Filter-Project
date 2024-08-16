@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import "./Card.css";
+//NOTES FOR NEXT TIME:
+// pass the entire array of objects to the card so...
+// we can filter in the context of the entire array NOT
+// the job itself (defeats the purpose; can only filter within the job)
 
-const Card = ({ job }) => {
-  const [filterItems, setFilterItems] = useState([job]);
-  // console.log(job);
-
+const Card = ({ data }) => {
+  const [filterItems, setFilterItems] = useState(data);
+  // console.log(filterItems);
   const handleFilterItems = (selectedLanguage) => {
-    const filteredList = filterItems.filter(
-      (item) => item.language === selectedLanguage
+    const filterItems = data.filter((job) =>
+      job.languages.includes(selectedLanguage)
     );
-
-    setFilterItems(filteredList); // Update the state with filtered items
-    console.log(filteredList); // Log filtered items to verify
+    setFilterItems(filterItems);
+    console.log(filterItems); // Log filtered items to verify
   };
 
   return (
     <>
-      {filterItems && (
-        <div className="card-container">
+      {filterItems.map((job) => (
+        <div className="card-container" key={job.id}>
           <div className="card-header">
             <div className="card-profile-img">
               <img src={job.logo} alt="profile image" />
@@ -54,7 +56,7 @@ const Card = ({ job }) => {
             ))}
           </div>
         </div>
-      )}
+      ))}
     </>
   );
 };

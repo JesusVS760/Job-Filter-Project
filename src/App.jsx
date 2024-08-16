@@ -10,9 +10,7 @@ const App = () => {
       <div className="app-style-image">
         <img src={headerImage} alt="header image" />
       </div>
-      {data.map((job) => (
-        <Card key={job.id} job={job} />
-      ))}
+      <Card data={data} />
     </div>
   );
 };
