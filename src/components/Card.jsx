@@ -9,25 +9,26 @@ const Card = ({ data }) => {
   const [filterItems, setFilterItems] = useState(data);
   const [activeFilters, setActiveFilters] = useState([]);
 
-  // console.log(filterItems);
   const handleFilterItems = (selectedLanguage) => {
-    // filter the selectedLanguage from the data to only include those whose
-    // selected language matches
-    const included = data.filter((job) =>
-      job.languages.includes(selectedLanguage)
-    );
-    setFilterItems(included);
+    console.log(`LANGUAGE TO ADD: ${selectedLanguage}`);
 
     if (!activeFilters.includes(selectedLanguage)) {
-      setActiveFilters([...activeFilters, selectedLanguage]);
-    }
-    // console.log(excluded);
-    // console.log(filterItems); // Log filtered items to verify
-  };
+      const updatedFilters = [...activeFilters, selectedLanguage];
+      setActiveFilters(updatedFilters);
 
+      // Filter items based on all active filters, including the new one
+      const filteredItems = data.filter((job) =>
+        updatedFilters.every((filter) => job.languages.includes(filter))
+      );
+      setFilterItems(filteredItems);
+    }
+  };
   const removeCatagory = (languageToRemove) => {
     // Remove the language from activeFilters
     const updatedFilters = activeFilters.filter(
+      // each language in the array (based on index) is
+      // checked, if it false, don't include, thus
+      // indirectly show in the list
       (language) => language !== languageToRemove
     );
     setActiveFilters(updatedFilters);
