@@ -61,3 +61,25 @@
   border-radius: 50px;
   color: white;
 }
+.active-filters {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background: white;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  width: 80%;
+  padding: 25px;
+  box-shadow: 0 4px 8px hsl(180, 29%, 50%); /* Bottom shadow */
+}
+.remove {
+  padding: 10px;
+  border: none;
+  background: hsl(180, 29%, 50%);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 5px;
+  align-items: center;
+  cursor: pointer;
+}

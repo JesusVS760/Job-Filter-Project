@@ -7,17 +7,42 @@ import "./Card.css";
 
 const Card = ({ data }) => {
   const [filterItems, setFilterItems] = useState(data);
+  const [removedItems, setRemoveItems] = useState([]);
+
   // console.log(filterItems);
   const handleFilterItems = (selectedLanguage) => {
     const filterItems = data.filter((job) =>
       job.languages.includes(selectedLanguage)
     );
+
+    console.log(filterItems);
+    setRemoveItems(filterItems);
     setFilterItems(filterItems);
-    console.log(filterItems); // Log filtered items to verify
+    // console.log(filterItems); // Log filtered items to verify
+  };
+
+  const removeCatagory = (job) => {
+    // console.log(job);
+    setFilterItems((prevValue) => [...prevValue, job]);
   };
 
   return (
     <>
+      {filterItems != data ? (
+        <div className="active-filters">
+          {filterItems.map((job) => (
+            <div>
+              {job.languages}
+              <button onClick={() => removeCatagory(job)} className="remove">
+                X
+              </button>
+            </div>
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
+
       {filterItems.map((job) => (
         <div className="card-container" key={job.id}>
           <div className="card-header">
