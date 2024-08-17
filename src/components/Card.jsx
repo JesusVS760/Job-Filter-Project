@@ -11,7 +11,8 @@ const Card = ({ data }) => {
 
   // console.log(filterItems);
   const handleFilterItems = (selectedLanguage) => {
-    console.log(selectedLanguage);
+    // filter the selectedLanguage from the data to only include those whose
+    // selected language matches
     const included = data.filter((job) =>
       job.languages.includes(selectedLanguage)
     );
@@ -52,6 +53,7 @@ const Card = ({ data }) => {
           ))}
         </div>
       )}
+
       {filterItems.map((job) => (
         <div className="card-container" key={job.id}>
           <div className="card-header">
