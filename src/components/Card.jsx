@@ -7,42 +7,51 @@ import "./Card.css";
 
 const Card = ({ data }) => {
   const [filterItems, setFilterItems] = useState(data);
-  const [removedItems, setRemoveItems] = useState([]);
+  const [activeFilters, setActiveFilters] = useState([]);
 
   // console.log(filterItems);
   const handleFilterItems = (selectedLanguage) => {
-    const filterItems = data.filter((job) =>
+    console.log(selectedLanguage);
+    const included = data.filter((job) =>
       job.languages.includes(selectedLanguage)
     );
+    setFilterItems(included);
 
-    console.log(filterItems);
-    setRemoveItems(filterItems);
-    setFilterItems(filterItems);
+    if (!activeFilters.includes(selectedLanguage)) {
+      setActiveFilters([...activeFilters, selectedLanguage]);
+    }
+    // console.log(excluded);
     // console.log(filterItems); // Log filtered items to verify
   };
 
-  const removeCatagory = (job) => {
-    // console.log(job);
-    setFilterItems((prevValue) => [...prevValue, job]);
+  const removeCatagory = (languageToRemove) => {
+    // Remove the language from activeFilters
+    const updatedFilters = activeFilters.filter(
+      (language) => language !== languageToRemove
+    );
+    setActiveFilters(updatedFilters);
+
+    // Update filterItems based on the remaining active filters
+    const filteredItems = data.filter((job) =>
+      updatedFilters.every((filter) => job.languages.includes(filter))
+    );
+    setFilterItems(filteredItems);
   };
 
   return (
     <>
-      {filterItems != data ? (
+      {activeFilters.length > 0 && (
         <div className="active-filters">
-          {filterItems.map((job) => (
-            <div>
-              {job.languages}
-              <button onClick={() => removeCatagory(job)} className="remove">
+          {activeFilters.map((filter, index) => (
+            <div key={index} className="filter-item">
+              {filter}
+              <button onClick={() => removeCatagory(filter)} className="remove">
                 X
               </button>
             </div>
           ))}
         </div>
-      ) : (
-        ""
       )}
-
       {filterItems.map((job) => (
         <div className="card-container" key={job.id}>
           <div className="card-header">
